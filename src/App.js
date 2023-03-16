@@ -17,46 +17,52 @@ function App() {
     // {id: 987,title: "Eu Não Danço",artist: "Eva Rapdiva",album: "Eu Não Danço",},
     // { id: 356,title: "Mobber",artist: "Gio-O, Xuxu Bower", album: "Mobber",}
   ]
-    const currentSong = 2;
-    let click = false;
+  const currentSong = 2;
+  let click = false;
+
 
   const shufflePlaylist = [...playlist]
 
-  console.log("Sem função",playlist)
+  console.log("Sem função", playlist)
 
   function Shuffle() {
-    if (click === false) {
-      click = true;
 
       let n = shufflePlaylist.length;
       for (let i = n - 1; i > 0; i--) {
         let j = Math.floor(Math.random() * (i + 1));
         [shufflePlaylist[i], shufflePlaylist[j]] = [shufflePlaylist[j], shufflePlaylist[i]];
       }
-        //shufflePlaylist.splice(0, 0,playlist[currentSong]);
-        const positionToDelete = shufflePlaylist.indexOf(playlist[currentSong])
-        console.log("positionToDelete:", positionToDelete)
 
-        shufflePlaylist.splice(positionToDelete, 1);
-        shufflePlaylist.splice(0, 0, playlist[currentSong]);
-     
-
-    } else {
-      click = false
-      
-
-    }
-
-    console.log("UNshuffle==>>", playlist)
-    console.log("shuffle==>>", shufflePlaylist)
+      const positionToDelete = shufflePlaylist.indexOf(playlist[currentSong])
+      shufflePlaylist.splice(positionToDelete, 1);
+      shufflePlaylist.splice(0, 0, playlist[currentSong]);
+    
   }
 
-  return (
-    <div className="App">
-      <button onClick={Shuffle}>shuffle</button>
+    function Clicked() {
+      if (click === false) {
+        click = true;
+        Shuffle()
+        console.log(click)
+        console.log("UNshuffle==>>", playlist)
+        console.log("shuffle==>>", shufflePlaylist)
 
-    </div>
-  );
-}
+      } else {
+        click = false;
+        console.log(click)
+      
+        console.log("UNshuffle==>>", playlist)
+
+      }
+    }
+
+    return (
+      <div className="App">
+        <button onClick={Clicked}>shuffle</button>
+
+      </div>
+    );
+  }
+
 
 export default App;
