@@ -27,19 +27,20 @@ function App() {
             console.log("ordem==>", playlist)
           
   }*/
-const lista = [1,2,3,4,5]
+const shufflePlaylist = [...playlist]
 
-console.log(lista)
+console.log(shufflePlaylist)
 
   function Shuffle(){
 
-         let n = lista.length;
+         let n = shufflePlaylist.length;
          for(let i = n -1; i>0;i--){
           let j = Math.floor(Math.random()*(i+1));
-          [lista[i], lista[j]]= [lista[j], lista[i]];
+          [shufflePlaylist[i], shufflePlaylist[j]]= [shufflePlaylist[j], shufflePlaylist[i]];
          }
 
-    console.log(lista)  
+    console.log("UNshuffle",playlist)  
+    console.log("shuffle",shufflePlaylist)  
 }
 
   return (
